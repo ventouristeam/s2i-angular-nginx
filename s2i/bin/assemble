@@ -31,6 +31,12 @@ if [ -f /tmp/src/openshift/conf/module.conf ]; then
   cp -Rf /tmp/src/openshift/conf/module.conf /etc/nginx/conf.d/module.conf
 fi
 
+if [ -f /tmp/src/openshift/conf/update_nginx_config.sh ]; then
+  echo "---> Updating nginx config"
+  cp -Rf /tmp/src/openshift/conf/update_nginx_config.sh /etc/nginx/update_nginx_config.sh
+  sh /etc/nginx/update_nginx_config.sh
+fi
+
 echo "---> Installing application to web container"
 cp -Rf /tmp/src/dist/. /usr/share/nginx/html/
 
